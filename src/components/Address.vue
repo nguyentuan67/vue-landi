@@ -21,13 +21,7 @@
       v-model="selectedWard"
       label="Phường/Xã"
     />
-    <InputComp
-      name="address"
-      label="Địa chỉ nhà"
-      v-model="detailAddress"
-      inputmode="numeric"
-    />
-    <!-- <div>Địa chỉ: {{ selectedCity?.name }}, {{ selectedDistrict?.name }}, {{ selectedWard?.name }}</div> -->
+    <div>Địa chỉ: {{ selectedCity?.name }}, {{ selectedDistrict?.name }}, {{ selectedWard?.name }}</div>
   </div>
 </template>
 <script>
@@ -48,8 +42,7 @@ export default {
       selectedCity: "",
       selectedDistrict: "",
       selectedWard: "",
-      host: "https://provinces.open-api.vn/api/",
-      detailAddress: "",
+      host: "https://provinces.open-api.vn/api/"
     }
   },
   methods: {

@@ -83,6 +83,36 @@ h1.page-title {
   background: linear-gradient(270deg, #AF325A 0%, #D22E57 20%, #E13D5C 40%, #EE4F62 60%, #F8646B 80%, #FF7D7B 100%);
 }
 
+.submit-moneycat {
+  font-weight: 700;
+  border: none;
+  background: #ff7f00;
+  border-radius: 25px;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  padding: 8px 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 14px;
+  padding: 6px 22px;
+}
+
+.orange-text {
+  color: #ff7f00;
+}
+
+.mt-20 {
+  margin-top: 20px !important;
+}
+
+.vib-title {
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 26px;
+  margin-top: 30px;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

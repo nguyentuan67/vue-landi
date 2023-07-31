@@ -8,11 +8,13 @@ import "bootstrap/dist/js/bootstrap.js";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 // import {  } from '@fortawesome/free-solid-svg-icons';
-import { faCircleUser } from "@fortawesome/free-regular-svg-icons";
+import { faCircleUser, faXmarkCircle } from "@fortawesome/free-regular-svg-icons";
 
-library.add(faCircleUser)
+library.add(faCircleUser, faXmarkCircle)
+const pinia = createPinia();
 
 createApp(App)
   .component('font-awesome-icon', FontAwesomeIcon)
   .use(router)
+  .use(pinia)
   .mount('#app')

@@ -101,7 +101,9 @@
       </section>
       <div class="text-center mt-5">
         <div class="submit-wrap">
-          <button class="submit mb-3">Đăng ký ngay</button>
+          <router-link class="d-block w-100 text-center" to="vib/application/card-feature">
+            <button class="submit mb-3">Đăng ký mở thẻ</button>
+          </router-link>
         </div>
       </div>
     </div>

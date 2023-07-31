@@ -10,9 +10,9 @@ export default defineConfig({
     compression({
       ext: '.gz', // Phần mở rộng tệp tin nén (ví dụ: .gz)
       algorithm: 'gzip', // Thuật toán nén (gzip, brotli, ...)
-      deleteOriginFile: true, // Xóa tệp tin gốc sau khi nén
+      deleteOriginFile: false, // Xóa tệp tin gốc sau khi nén
       verbose: true, // In thông báo chi tiết
-      filter: /\.(js|css|json|html|svg|png|jpg)$/i, // Điều kiện để nén các tệp tin cần thiết (vd: js, css, json, html, svg)
+      filter: /\.(js|css|json|html|svg)$/i, // Điều kiện để nén các tệp tin cần thiết (vd: js, css, json, html, svg)
     }),
   ],
   resolve: {
