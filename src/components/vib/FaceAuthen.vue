@@ -97,7 +97,8 @@ let index = ref(0);
 const humanConfig = {
   // user configuration for human, used to fine-tune behavior
   modelBasePath: "/models", // models can be loaded directly from cdn as well
-  backend: "webgl",
+  backend: "tensorflow",
+  wasmPath: "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm@3.9.0/dist/",
   filter: { enabled: true, equalization: true, flip: false },
   gesture: { enabled: true },
   face: {
@@ -109,6 +110,7 @@ const humanConfig = {
     description: { enabled: true },
     emotion: { enabled: false },
   },
+  debug: true,
   body: { enabled: false },
   hand: { enabled: false },
   object: { enabled: false },
