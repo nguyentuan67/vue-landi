@@ -23,7 +23,7 @@
         <font-awesome-icon icon="fa-regular fa-xmark-circle" />
       </div>
       <div class="video-wrap">
-        <video id="video" class="video" ref="video" autoplay></video>
+        <video id="video" class="video" autoplay></video>
         <div id="face-wrap" class="face-wrap" :class="{inside: !isOutside}"></div>
         <div class="text-guide">{{ textGuide }}</div>
         <ul class="list-face">
