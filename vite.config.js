@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
-import compression from 'vite-plugin-compression';
+import viteImagemin from 'vite-plugin-imagemin'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -10,12 +10,32 @@ export default defineConfig({
   },
   plugins: [
     vue(),
-    compression({
-      ext: '.gz', // Phần mở rộng tệp tin nén (ví dụ: .gz)
-      algorithm: 'gzip', // Thuật toán nén (gzip, brotli, ...)
-      deleteOriginFile: false, // Xóa tệp tin gốc sau khi nén
-      verbose: true, // In thông báo chi tiết
-      filter: /\.(js|css|json|html|svg)$/i, // Điều kiện để nén các tệp tin cần thiết (vd: js, css, json, html, svg)
+    viteImagemin({
+      gifsicle: {
+        optimizationLevel: 7,
+        interlaced: false,
+      },
+      optipng: {
+        optimizationLevel: 7,
+      },
+      mozjpeg: {
+        quality: 20,
+      },
+      pngquant: {
+        quality: [0.8, 0.9],
+        speed: 4,
+      },
+      svgo: {
+        plugins: [
+          {
+            name: 'removeViewBox',
+          },
+          {
+            name: 'removeEmptyAttrs',
+            active: false,
+          },
+        ],
+      },
     }),
   ],
   resolve: {
