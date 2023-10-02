@@ -125,4 +125,10 @@ export default {
     text-decoration: none;
     color: #ff7f00;
 }
+
+@media (max-width: 767px) {
+  .social-block {
+    margin-top: 30px;
+  }
+}
 </style>

@@ -8,6 +8,7 @@ export const registerStore = defineStore({
         id: null,
         cardTypeId: 1,
         base64ImageCmt: null,
+        registerStep: null
     }),
     actions: {
         async apiRegisterCard(data) {
@@ -23,10 +24,17 @@ export const registerStore = defineStore({
         },
 
         async apiRegisterContactInfo(data) {
-            const response = await ApiService().post(constants.API_REGISTER_CONTACT_INFO, data);
+            const cardInfo = JSON.parse(localStorage.getItem('cardInfo'))
+            const resquest = {
+                ...data, 
+                cardTypeId: this.cardTypeId,
+                ...cardInfo
+            }
+            const response = await ApiService().post(constants.API_REGISTER_CONTACT_INFO, resquest);
             if(response.status == 200 && response.data.output) {
-                localStorage.setItem("userId", JSON.stringify(response.data.output))
-                this.id = response.data.output;
+                localStorage.setItem("userId", response.data.output.id)
+                localStorage.setItem("cardId", response.data.output.cardId)
+                localStorage.setItem("registerStep", response.data.output.registerStep);
             }
             return response.data;
         },
@@ -76,9 +84,7 @@ export const registerStore = defineStore({
             }
             const res = await ApiService().post(constants.API_EKYC_FACEVERIFY, request)
             if (res.data.error == '0') {
-                localStorage.removeItem("userId")
-                localStorage.removeItem("cardId")
-                localStorage.removeItem("base64ImageCmt")
+                localStorage.clear()
             }
             return res.data
         }

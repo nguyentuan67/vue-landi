@@ -3,7 +3,9 @@
     <div class="content">
       <div class="form">
         <register-flow v-if="tabIndex > -1" :tab-index="this.tabIndex"/>
-        <div class="banner"></div>
+        <div class="banner">
+          <img src="../assets/Banner-card-mobile.jpg" alt="">
+        </div>
         <router-view v-slot="{Component}">
           <component ref="currentStep" :is="Component" />
         </router-view>
@@ -21,6 +23,7 @@
 import RegisterFlow from '../components/vib/RegisterFlow.vue';
 import { ref } from 'vue';
 import { emitter } from "../utils/emitter";
+import * as constants from "../constants";
 export default {
   components: {
     RegisterFlow
@@ -54,31 +57,19 @@ export default {
   }),
   created() {
     const id = localStorage.getItem('userId')
-    const cardId = localStorage.getItem('cardId')
-    const imageCmt = localStorage.getItem('base64ImageCmt')
-    if (id && cardId) {
-      if (this.$route.name == 'VibFaceAuthen' && !imageCmt) {
-        this.$router.push({name: 'VibVerify'})
-        this.tabIndex = 3
-      } else {
-        // this.tabs.forEach((tab, i) => {
-        //   if(this.$route.name == tab.name) {
-        //     this.tabIndex = i;
-        //   }
-        // })
-      }
-    } else {
+    const cardInfo = JSON.parse(localStorage.getItem('cardInfo'))
+    if (id) {
+      this.checkStep();
+    } else if (!cardInfo) {
       this.$router.push({name: 'VibCardFeature'})
       this.tabIndex = -1
     }
     emitter.on("loading", isLoading => this.isLoading = isLoading)
   },
-  updated() {
-    this.tabs.forEach((tab, i) => {
-      if(this.$route.name == tab.name) {
-        this.tabIndex = i;
-      }
-    })
+  watch: {
+    '$route.path'() {
+      this.checkStep()
+    }
   },
   methods: {
     async submit() {
@@ -87,11 +78,46 @@ export default {
         const isValid = await this.$refs.currentStep.submit();
         this.isLoading = false
         if(isValid) {
-          this.tabIndex++;
-          this.$router.push({name: this.tabs[this.tabIndex].name})
+          if (this.tabIndex == 0) {
+            let registerStep = localStorage.getItem("registerStep")
+            this.tabIndex = registerStep;
+          } else {
+            this.tabIndex++;
+          }
+          if (this.tabIndex < this.tabs.length) {
+            this.$router.push({name: this.tabs[this.tabIndex]?.name})
+            localStorage.setItem("registerStep", this.tabIndex)
+          } else {
+            this.tabIndex = 0
+          }
         }
       }
-    }
+    },
+    checkStep() {
+      this.tabIndex = this.tabs.findIndex(tab => this.$route.name == tab.name)
+      if (this.tabIndex < 0) {
+        return;
+      }
+      let registerStep = localStorage.getItem("registerStep")
+      if (this.tabIndex < registerStep) {
+        this.$router.push({name: 'VibCardFeature'});
+        this.tabIndex = -1;
+        //xoa localStorage tru cardInfo
+        localStorage.removeItem("userId")
+        localStorage.removeItem("registerStep")
+        localStorage.removeItem("cardId")
+        localStorage.removeItem("base64ImageCmt")
+      } else {
+        const imageCmt = localStorage.getItem('base64ImageCmt')
+        if (registerStep >= constants.REGISTER_STEP_OCR && !imageCmt) {
+          this.tabIndex = constants.REGISTER_STEP_OCR - 1;
+          localStorage.setItem("registerStep", this.tabIndex)
+        } else {
+          this.tabIndex = registerStep;
+        }
+        this.$router.push({name: this.tabs[this.tabIndex].name});
+      }
+    },
   }
 }
 </script>
@@ -125,7 +151,9 @@ export default {
   padding-left: 30px;
   border-radius: 5px 5px 0px 0px;
   align-items: center!important;
-  margin-top: -30px;
+}
+.banner img {
+  display: none;
 }
 .continute-wrap {
   margin-top: 30px;
@@ -200,4 +228,24 @@ export default {
   }
 }
 
+@media (max-width: 767px) {
+  .wrapper .content {
+    margin: 0 auto 40px;
+    max-width: 1100px;
+  }
+  .wrapper .form {
+    padding: 0 20px;
+  }
+  .banner {
+    padding-left: 0;
+    background-image: none;
+    text-align: center;
+    margin: 0 -20px;
+    height: auto;
+  }
+  .banner img {
+    display: block;
+    width: 100%;
+  }
+}
 </style>

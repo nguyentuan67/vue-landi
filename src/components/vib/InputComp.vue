@@ -134,4 +134,9 @@ input:focus {
   margin-top: 4px;
   font-size: 12.8px;
 }
+@media only screen and (max-width: 575px) {
+  .row .col-12 + .col-12 .yo-form-group {
+    margin-top: 20px;
+  }
+}
 </style>

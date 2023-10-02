@@ -131,7 +131,6 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     margin-bottom: 40px;
 }
 .faq-title {
@@ -146,6 +145,7 @@ export default {
     border: 1px solid #eee;
     border-radius: 4px;
     padding: 10px;
+    margin: 0 auto;
     margin-bottom: 20px;
     font-size: 14px;
     color: #555;
@@ -155,7 +155,9 @@ export default {
     padding: 0;
 }
 .faq-blocks {
-    width: 747px;
+    width: 95%;
+    max-width: 688px;
+    margin-left: 10px;
 }
 .faq-blocks-title {
     font-size: 1.375em;

@@ -108,7 +108,7 @@
       </div>
     </div>
     <div class="page-benefit">
-      <section class="section-padding">
+      <section class="section-padding container-fluid">
         <h2 class="page-title">Lợi ích khi sử dụng dịch vụ</h2>
         <div class="row">
           <div class="col-12 col-lg-4">
@@ -502,5 +502,32 @@ export default {
   width: 384px;
   margin-top: 25px;
   line-height: 20px;
+  max-width: 100%;
+}
+@media (max-width: 767px) {
+  .banner {
+    padding-top: 20px;
+  }
+  .title {
+    font-size: 30px;
+    text-align: center;
+  }
+  .form-wrap {
+    flex-direction: column;
+  }
+  .form-wrap > div {
+    width: 100%;
+  }
+  .form-wrap .form {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+  }
+  .info-wrap > div {
+    width: 50%;
+    text-align: center;
+  }
+  .page-offer .submit {
+    width: 80%;
+  }
 }
 </style>

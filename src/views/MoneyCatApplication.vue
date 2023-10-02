@@ -46,6 +46,12 @@ export default {
     const contactInfo = JSON.parse(localStorage.getItem("contact-info"));
     if (!contactInfo) {
       this.$router.push({name: 'MoneyCatHome'})
+    } else {
+      this.tabs.forEach((tab, i) => {
+        if(this.$route.name == tab.name) {
+          this.tabIndex = i;
+        }
+      })
     }
   },
   methods: {
@@ -65,7 +71,13 @@ export default {
       }
     },
     goBack() {
-      this.$router.go(-1);
+      if (this.tabIndex > 0) {
+        this.tabIndex--;
+        this.$router.push({ name: this.tabs[this.tabIndex].name });
+      } else {
+        console.log("a");
+        this.$router.push({ name: "MoneyCatHome" });
+      }
     },
   },
   updated() {

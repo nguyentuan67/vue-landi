@@ -184,10 +184,9 @@ export default {
     color: #000;
     text-decoration: underline;
 }
-@media (min-width: 700px){
 .connect__section, .howget__section, .howpay__section {
     margin-top: 40px;
-}}
+}
 .aboutus {
     margin-bottom: 40px;
     text-align: center;
@@ -204,7 +203,7 @@ export default {
     color: #000;
 }
 .aboutus-content {
-    width: 100%;
+    width: 95%;
     max-width: 747px;
     text-align: left;
 }
@@ -218,9 +217,9 @@ export default {
     text-decoration: none;
 }
 .faq-blocks {
-    align-items: flex-start;
+    width: 95%;
     margin-bottom: 5px;
-    width: 747px;
+    max-width: 747px;
 }
 .faq-block-question {
     display: flex;
@@ -256,6 +255,7 @@ export default {
     flex-direction: row;
     justify-content: space-between;
     margin-top: 40px;
+    flex-wrap: wrap;
 }
 .new-block-static .blocks .block {
     background: #fff;
@@ -264,5 +264,19 @@ export default {
     position: relative;
     padding: 50px 20px 70px;
     border-radius: 20px;
+}
+@media (max-width: 800px) {
+    .new-block-static .blocks .block {
+        width: 45%;
+        flex: 40%;
+        margin-bottom: 50px;
+    }
+}
+@media (max-width: 620px) {
+    .new-block-static .blocks .block {
+        width: 100%;
+        flex: 90%;
+        margin-bottom: 50px;
+    }
 }
 </style>

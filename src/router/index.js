@@ -148,6 +148,19 @@ const routes = [
         component: () => import("../components/moneyCat/Verify.vue"),
       }
     ]
+  },
+  {
+    path: "/verify",
+    name: "EmailVerify",
+    component: () => import("../views/EmailVerify.vue"),
+    beforeEnter: (to, from, next) => {
+      //kiểm tra tồn tại token
+      if (to.query.token) {
+        next();
+      } else {
+        next({ name: 'Home' });
+      }
+    }
   }
   // {
   //   path: "/login",

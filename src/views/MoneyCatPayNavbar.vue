@@ -179,4 +179,16 @@ export default {
 .selected .option-text {
   color: #f62;
 }
+
+@media (max-width: 900px) {
+  .pay-nmd {
+    flex-direction: column;
+  }
+  .pay-menu {
+    max-width: 100%;
+  }
+  .pay-wrap {
+    margin-left: 0;
+  }
+}
 </style>

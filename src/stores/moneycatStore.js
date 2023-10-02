@@ -32,7 +32,19 @@ export const moneycatStore = defineStore({
         ...data
       }
       const res = await ApiService().post(constants.API_MC_EKYC_OCR, request)
+      if (res.data.error == '0') {
+        localStorage.removeItem("contact-info")
+      }
       return res.data
+    },
+    async getBasicInfo() {
+      const phone = JSON.parse(localStorage.getItem('contact-info')).phone;
+      const res = await ApiService().get(constants.MC_GET_BASIC_INFO, {
+        params: {
+          phone
+        }
+      })
+      return res.data;
     }
   }
 })

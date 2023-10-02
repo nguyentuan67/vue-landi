@@ -2,7 +2,7 @@
     <p class="vib-title mt-20">Xác thực giấy tờ</p>
     <p class="sub-title mt-20">Để hoàn tất quá trình đăng ký, vui lòng chụp bản gốc CMND/CCCD của bạn để xác thực hồ sơ</p>
     <div class="row mt-20">
-        <div class="col-sm-4 col-12 spa_s">
+        <div class="col-sm-4 col-12 text-center">
             <div class="title-back">Mặt trước</div>
             <div class="photo-block-preview">
                 <img v-if="!encodeFrontImg" src="../../assets/photo.svg" alt="front">
@@ -13,7 +13,7 @@
             <div class="error-valid">{{ errorMessageFront }}</div>
         </div>
         
-        <div class="col-sm-4 col-12 spa_s">
+        <div class="col-sm-4 col-12 text-center">
             <div class="title-back">Mặt sau</div>
             <div class="photo-block-preview">
                 <img v-if="!encodeBackImg" src="../../assets/photo.svg" alt="back">
@@ -104,12 +104,12 @@ export default {
                     if(type == 'front') {
                         this.encodeFrontImg = "data:image/jpeg;base64," + base64Image,
                         this.base64Front = base64Image
-                        console.log(this.encodeFrontImg);
+                        // console.log(this.encodeFrontImg);
                     }
                     else if(type == 'back') {
                         this.encodeBackImg = "data:image/jpeg;base64," + base64Image,
                         this.base64Back = base64Image
-                        console.log(this.encodeBackImg);
+                        // console.log(this.encodeBackImg);
                     }
                 };
                 reader.readAsDataURL(file);
@@ -131,6 +131,8 @@ export default {
     align-items: center;
     align-content: center;
     justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 .button-upload-photo {
     font-size: 14px;
@@ -171,7 +173,6 @@ export default {
     font-weight: 600;
     text-align: center;
     color: #000;
-    max-width: 200px;
     width: 100%;
 }
 .loading-img {
@@ -187,5 +188,13 @@ export default {
     color: #fff;
     font-size: 24px;
     z-index: 99;
+}
+
+@media only screen and (max-width: 575px) {
+    .photo-block-preview, .button-upload-photo {
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 </style>

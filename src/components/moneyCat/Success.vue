@@ -6,7 +6,7 @@
       </div>
       <h1>Thành công</h1>
       <p>Chúng tôi đã nhận được yêu cầu của bạn;
-        <br>Chúng tôi sẽ sớm liên lạc!
+        <br>Vui lòng kiểm tra email để xác thực tài khoản
       </p>
       <router-link class="routerlink" to="/moneycat">Quay lại trang chủ</router-link>
     </div>

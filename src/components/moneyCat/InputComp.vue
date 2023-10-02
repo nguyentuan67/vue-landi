@@ -55,7 +55,6 @@
       },
       openDatePicker() {
         this.$refs.date.type = 'date'
-        this.$refs.date.showPicker();
       },
       closeDatePicker() {
         if (!this.computedValue) {

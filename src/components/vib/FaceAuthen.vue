@@ -97,8 +97,7 @@ let index = ref(0);
 const humanConfig = {
   // user configuration for human, used to fine-tune behavior
   modelBasePath: "/models", // models can be loaded directly from cdn as well
-  backend: "tensorflow",
-  wasmPath: "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm@3.9.0/dist/",
+  backend: "webgl",
   filter: { enabled: true, equalization: true, flip: false },
   gesture: { enabled: true },
   face: {
@@ -110,7 +109,6 @@ const humanConfig = {
     description: { enabled: true },
     emotion: { enabled: false },
   },
-  debug: true,
   body: { enabled: false },
   hand: { enabled: false },
   object: { enabled: false },
@@ -190,16 +188,17 @@ async function startCamera() {
   errorMessage.value = "Đang phân tích khuôn mặt"
   video = document.getElementById("video");
   const videoWrap = document.querySelector(".video-wrap")
-  videoWrap.style.width = isMobile() ? "360px" : "640px"
-  videoWrap.style.height = isMobile() ? "270px" : "480px"
+  const smallScreen = window.innerWidth < 640
+  videoWrap.style.width = smallScreen ? "360px" : "640px"
+  videoWrap.style.height = smallScreen ? "270px" : "480px"
   let stream;
   const constraints = {
     audio: false,
     video: {
       facingMode: "user",
       resizeMode: "crop-and-scale",
-      width: isMobile() ? VIDEO_SIZE['360 X 270'].width : 640,
-      height: isMobile() ? VIDEO_SIZE['360 X 270'].height : 480,
+      width: smallScreen ? VIDEO_SIZE['360 X 270'].width : 640,
+      height: smallScreen ? VIDEO_SIZE['360 X 270'].height : 480,
     },
   };
   // enumerate devices for diag purposes
@@ -230,7 +229,7 @@ async function rotationHead(faceResult) {
     faceWrap = document.querySelector(".face-wrap");
     videoSize = document.getElementById("video");
     const x = faceWrap.offsetWidth / 2 - videoSize.offsetWidth / 2;
-    const y = (faceWrap.offsetHeight * 70) / 100 - faceWrap.offsetTop;
+    const y = (faceWrap.offsetHeight * 68) / 100 - faceWrap.offsetTop;
     const centerX = faceWrap.offsetLeft
     const centerY = faceWrap.offsetTop - (faceWrap.offsetHeight * 0.2)
     const radius = faceWrap.offsetWidth / 2;
@@ -263,16 +262,16 @@ async function rotationHead(faceResult) {
         const currentEmbedding = faceResult.face[filterFace[0].face].embedding;
         if (firstImg != undefined) {
           const similarity = human.match.similarity(firstImg[0].embedding, currentEmbedding);
-          console.log(similarity);
+          // console.log(similarity);
           if (similarity > 0.5) {
             isVerified.value = true;
             let lenGest = filterFace.length;
             let firstGesture = filterFace[0].gesture;
             let lastGesture = filterFace[lenGest - 1].gesture;
             let direction = orderCapture[index.value];
-            if (direction == "left" && firstGesture === "facing left" && lastGesture !== "head up") {
+            if (direction == "left" && firstGesture === "facing left") {
               captureVideo(direction, x, y);
-            } else if (direction == "right" && firstGesture === "facing right" && lastGesture !== "head up") {
+            } else if (direction == "right" && firstGesture === "facing right") {
               captureVideo(direction, x, y);
             } else if (direction == "up" && lastGesture === "head up" && firstGesture === "facing center") {
               captureVideo(direction, x, y);
@@ -431,7 +430,7 @@ const textGuide = computed(() => {
   height: 300px;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -70%);
+  transform: translate(-50%, -68%);
   border: 3px solid #db2727;
   background: transparent;
   border-radius: 50%;
@@ -486,5 +485,27 @@ const textGuide = computed(() => {
   font-size: 18px;
   text-align: center;
   color: #ff5454;
+}
+@media only screen and (max-width: 639px) {
+  .face-wrap {
+    width: 200px;
+    height: 200px
+  }
+  .text-guide {
+    bottom: 10px;
+    font-size: 16px;
+  }
+  .list-face {
+    bottom: -60px;
+  }
+}
+@media only screen and (max-width: 360px) {
+  .face-wrap {
+    width: 200px;
+    height: 200px
+  }
+  .text-guide {
+    bottom: 10px;
+  }
 }
 </style>

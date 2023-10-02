@@ -129,7 +129,8 @@ export default {
         }
     },
     async created() {
-        this.provinces = await this.getApi("https://provinces.open-api.vn/api/?depth=1")
+        this.provinces = await this.getApi("https://provinces.open-api.vn/api/?depth=1");
+        await this.getBasicInfo();
     },
     methods: {
         async submit() {
@@ -164,7 +165,37 @@ export default {
         async getApi(api) {
             return axios.get(api).then(res => res.data)
         },
-    }
+        async getBasicInfo() {
+            const res = await moneycatStore().getBasicInfo();
+            const info = res.output
+            let dob;
+            if (res.error == '0') {
+                if (info.dob != null) {
+                    let newDob = new Date(info.dob)
+                    let day = ("0" + newDob.getDate()).slice(-2);
+                    let month = ("0" + (newDob.getMonth() + 1)).slice(-2);
+                    dob = newDob.getFullYear()+"-"+(month)+"-"+(day);
+                } else {
+                    dob = "";
+                }
+                if (info.gender == null) {
+                    this.gender = null;
+                } else {
+                    
+                    this.gender = info.gender == 0 ? {title: "Nam", value: 0} : {title: "Nữ", value: 1}
+                }
+                const location = this.provinces.find(province => province.name == info.address)
+                this.dob = dob;
+                this.identity = info.nid;
+                this.carierphone = info.phoneType;
+                location ? this.location = location : ""
+                this.relativePhone1 = info.relativePhone1;
+                this.relativePhone2 = info.relativePhone2;
+                this.nameBank = info.bankName;
+                this.accountNumber = info.bankAccount;
+            }
+        }
+    },
 }
 </script>
 <style scoped>
@@ -250,5 +281,11 @@ export default {
     color: #ff5454;
     margin-top: 4px;
     font-size: 12.8px;
+}
+
+@media (max-width: 767px) {
+  .social-block {
+    margin-top: 30px;
+  }
 }
 </style>

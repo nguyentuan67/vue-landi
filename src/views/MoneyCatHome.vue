@@ -10,7 +10,7 @@
             109.884 khách hàng được vay online với 0% lãi suất và chi phí
           </div>
           <div class="slider">
-            <div class="mb-4 flex-between">
+            <div class="mb-3 md-mb-4 flex-between">
               <div>Tôi cần vay tiền</div>
               <div class="loan-amount">{{ loanAmountText }} Vnd</div>
             </div>
@@ -43,29 +43,34 @@
         <div class="right-form">
           <div class="form-input">
             <InputComp 
+              class="input"
               label="Họ và tên"
               v-model="fullName"
               :rules="nameRules"
               ref="fullName"
             />
             <InputComp 
+              class="input"
               label="Số di động của bạn"
               v-model="phone"
               :rules="phoneRules"
               ref="phone"
             />
             <InputComp 
+              class="input"
               label="Email"
               v-model="email"
               :rules="emailRules"
               ref="email"
             />
-            <div class="error-message">{{ errorEmail }}</div>
+            <div class="error-message">{{ errorPhone }}</div>
             <div class="error-message">{{ errorMessage }}</div>
           </div>
-          <button class="submit-moneycat" @click="registerContactInfo">
-            <span>Đăng ký ngay</span>
-          </button>
+          <div class="form-submit">
+            <button class="submit-moneycat" @click="registerContactInfo">
+              <span>Đăng ký ngay</span>
+            </button>
+          </div>
           <div class="term-condition">
             Bằng cách nhấp vào nút Đăng ký, bạn đồng ý rằng bạn đã đọc và đồng ý với <span class="orange-text">Điều khoản, Điều kiện</span> và <span class="orange-text">Chính sách quyền riêng tư</span> và cho phép khoản vay được duyệt có thể thấp hơn khoản vay đã chọn.
             Tính toán trên chỉ áp dụng với Khách hàng mới.
@@ -81,7 +86,7 @@
     <p class="step-desc">MoneyCat - Nền tảng cho vay online uy tín nhất, cho vay với cách thức đơn giản, giải ngân nhanh chóng đáp ứng những nhu cầu vay tiền online nhanh trong ngày hoặc cần vay vốn online để kinh doanh…</p>
     <div class="container">
       <div class="row">
-        <div class="col-6 col-md-3">
+        <div class="col-12 col-sm-6 col-md-3">
           <div class="step-wrap">
             <div class="step-num">01</div>
             <div class="step-pic">
@@ -93,7 +98,7 @@
             </div>
           </div>
         </div>
-        <div class="col-6 col-md-3">
+        <div class="col-12 col-sm-6 col-md-3">
           <div class="step-wrap">
             <div class="step-num">02</div>
             <div class="step-pic">
@@ -104,7 +109,7 @@
               Đợi câu trả lời. Chúng tôi sẽ trả lời bạn trong vòng 30 phút.            </div>
           </div>
         </div>
-        <div class="col-6 col-md-3">
+        <div class="col-12 col-sm-6 col-md-3">
           <div class="step-wrap">
             <div class="step-num">03</div>
             <div class="step-pic">
@@ -115,7 +120,7 @@
               Nhân viên giao dịch sẽ liên lạc với bạn và cho bạn biết làm thế nào để có được một khoản vay.</div>
           </div>
         </div>
-        <div class="col-6 col-md-3">
+        <div class="col-12 col-sm-6 col-md-3">
           <div class="step-wrap">
             <div class="step-num">04</div>
             <div class="step-pic">
@@ -141,19 +146,19 @@
         Là một trong những nền tảng cho vay online uy tín nhất tại Việt Nam, MoneyCat cung cấp dịch vụ cho đa dạng khách hàng với quy trình thủ tục đơn giản. Tại MoneyCat, chúng tôi mong muốn đem lại giải pháp tài chính thông minh, hiện đại, phục vụ các nhu cầu đa dạng của khách hàng.
       </div>
       <div class="row">
-        <div class="col-12 col-sm-4">
+        <div class="col-12 col-md-4">
           <div class="map-wrap">
             <img class="map-img" src="../assets/moneycat/map_new.png" alt="map">
             <p class="text-center map-text">Độ tuổi từ 22 đến 60</p>
           </div>
         </div>
-        <div class="col-12 col-sm-4">
+        <div class="col-12 col-md-4">
           <div class="map-wrap">
             <img class="map-img" src="../assets/moneycat/map_new.png" alt="map">
             <p class="text-center map-text">Sinh sống ở tất cả các tỉnh thành tại Việt Nam</p>
           </div>
         </div>
-        <div class="col-12 col-sm-4">
+        <div class="col-12 col-md-4">
           <div class="map-wrap">
             <img class="map-img" src="../assets/moneycat/map_new.png" alt="map">
             <p class="text-center map-text">Người có thu nhập ổn định</p>
@@ -172,19 +177,19 @@
         MoneyCat - Nền tảng cho vay tiền online uy tín nhất với các khoản vay linh hoạt, giúp khách hàng tự cân đối tài chính theo khả năng chi trả. Khách hàng có thể dễ dàng chọn được khoản vay online tùy theo khả năng tài chính và kế hoạch chi tiêu của mình.
       </p>
       <div class="row">
-        <div class="col-12 col-sm-4">
+        <div class="col-12 col-md-4">
           <div class="guild-wrap">
             <div class="panel-title">Kì hạn vay</div>
             <div class="panel-text">Kỳ hạn tối thiểu 91 ngày - Tối đa 182ngày</div>
           </div>
         </div>
-        <div class="col-12 col-sm-4">
+        <div class="col-12 col-md-4">
           <div class="guild-wrap">
             <div class="panel-title">Hạn mức vay</div>
             <div class="panel-text">VND 1 000 000 to VND 10 000 000</div>
           </div>
         </div>
-        <div class="col-12 col-sm-4">
+        <div class="col-12 col-md-4">
           <div class="guild-wrap">
             <div class="panel-title">Lãi suất</div>
             <div class="panel-text">Lãi suất tối thiểu<br> 12% - tối đa 18.25% % *</div>
@@ -232,7 +237,7 @@ export default {
       slideValue: 0,
       slidePercent: 0,
       loanTerm: 5,
-      errorEmail: "",
+      errorPhone: "",
       errorMessage: "",
     }
   },
@@ -256,9 +261,13 @@ export default {
         }
         const res = await moneycatStore().registerContactInfo(data);
         if(res.error == 0) {
-          this.$router.push({name: 'MoneyCatRegister'})
+          if (res.output.registerStep == 1) {
+            this.$router.push({name: 'MoneyCatRegister'})
+          } else if (res.output.registerStep == 2) {
+            this.$router.push({name: 'MoneyCatVerify'})
+          }
         } else if (res.error == '3') {
-          res.detailMessage?.email ? this.errorEmail = "Email đã được đăng ký" : "";
+          res.output?.phone ? this.errorPhone = "Số điện thoại đã được đăng ký" : "";
         } else {
           this.errorMessage = "Có lỗi xảy ra, vui lòng thử lại"
         }
@@ -430,7 +439,6 @@ export default {
   text-transform: uppercase;
   letter-spacing: normal;
   box-shadow: 0 0 50px rgba(38,43,82,.05);
-  margin-bottom: 25px;
 }
 .form-submit .submit-moneycat span {
   font-size: 20px;
@@ -463,13 +471,13 @@ export default {
   font-weight: 600;
   width: 95%;
   color: #fff;
+  margin: 40px auto 15px;
   text-align: center;
-  margin-top: 40px;
-  margin-bottom: 15px;
 }
 .step-desc {
   color: #fff;
   margin-bottom: 15px;
+  text-align: center;
 }
 .step-wrap {
   max-width: 212px;
@@ -560,6 +568,7 @@ export default {
   min-height: 100px;
   display: block;
   box-sizing: border-box;
+  margin-bottom: 20px;
 }
 .panel-title {
   font-size: 18px;
@@ -584,5 +593,69 @@ export default {
   max-width: 1000px;
   display: inline-block;
   margin-top: 45px;
+}
+
+@media (max-width: 991px) {
+  .step-section {
+    margin-top: 0;
+  }
+  .step-title {
+    color: #000;
+  }
+  .step-desc {
+    color: #000;
+    margin-bottom: 10px;
+  }
+  .step-wrap {
+    box-shadow: none;
+    max-width: inherit;
+  }
+}
+
+@media (max-width: 767px) {
+  .map-wrap {
+    margin-bottom: 30px;
+    margin-top: 0;
+  }
+}
+@media (max-width: 700px) {
+  .calculator-form {
+    flex-direction: column;
+  }
+  .calculator-form .form-title {
+    font-size: 18px;
+  }
+  .calculator-form .left-form {
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 20px;
+  }
+  .calculator-form .right-form {
+    margin-top: -5px;
+    padding-top: 0;
+    background: #fff;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 20px;
+  }
+  .banner-top {
+    height: 100%;
+    padding-bottom: 25px;
+  }
+  .step-wrap {
+    min-height: inherit;
+  }
+  .step-desc {
+    display: none;
+  }
+}
+@media (max-width: 450px) {
+.left-form .label {
+  margin-bottom: 0;
+}
+.form-input {
+  margin-bottom: 10px;
+}
+.form-input .input {
+  margin-bottom: 0;
+}
 }
 </style>

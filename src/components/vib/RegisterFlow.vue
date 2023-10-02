@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div class="flow-wrap">
     <div class="max-720 m-auto">
       <div class="nav-step">
         <ul>
@@ -8,10 +8,9 @@
             <span v-else>
               <span class="hide-small">{{ flow }}</span>
             </span>
-            <div class="icon">
+            <div class="icon" v-if="i + 1 != listFlow.length">
               <img
                 class="img-nextpage"
-                v-if="i + 1 != listFlow.length"
                 src="../../assets/Angle_right_black.svg"
                 alt="img"
               />
@@ -48,6 +47,8 @@ export default {
 .nav-step ul {
   display: flex;
   vertical-align: middle;
+  padding: 0;
+  margin: 0;
 }
 .nav-step ul li {
   margin-right: auto;
@@ -74,5 +75,13 @@ export default {
 .icon {
   width: 24px;
   height: 24px;
+}
+@media only screen and (max-width: 575px) {
+
+}
+@media only screen and (max-width: 450px) {
+  .icon {
+    display: none;
+  }
 }
 </style>

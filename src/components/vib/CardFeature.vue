@@ -67,8 +67,8 @@ export default {
         {title: "3%", value: 3},
         {title: "5%", value: 5},
       ],
-      packageSelect: null,
-      dateSelect: null,
+      packageSelect: "",
+      dateSelect: "",
       paySelect: null,
       promotionType: 1,
       errorMessage: "",
@@ -85,18 +85,26 @@ export default {
           monthlyStatementDate: this.dateSelect,
           minPaymentAmount: this.paySelect.title
         }
-        const response = await registerStore().apiRegisterCard(data);
-        if (response.error == '0') {
-          return true;
-        } else {
-          this.errorMessage = "Có lỗi xảy ra, vui lòng thử lại"
-          return false;
-        }
+        localStorage.setItem('cardInfo', JSON.stringify(data));
+        return true;
         // trả giá trị validate cho VibApplication
       } else {
         return isValid;
       }
+    },
+    getCardInfo() {
+      const cardInfo = JSON.parse(localStorage.getItem("cardInfo"));
+      if (cardInfo) {
+        this.promotionType = cardInfo.promotionType;
+        this.packageSelect = cardInfo.mainOffer;
+        this.dateSelect = cardInfo.monthlyStatementDate;
+        const pay = this.pays.find(pay => pay.title == cardInfo.minPaymentAmount);
+        this.paySelect = {...pay}
+      }
     }
+  },
+  mounted() {
+    this.getCardInfo()
   }
 }
 </script>

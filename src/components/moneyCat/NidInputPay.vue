@@ -265,4 +265,25 @@ img {
     margin-top: 15px;
     color: #747983;
 }
+
+@media (max-width: 900px) {
+  .table {
+    flex-direction: column;
+  }
+  .table > div {
+    width: 100%;
+  }
+}
+@media (max-width: 700px)  {
+  .input-form {
+    flex-direction: column;
+  }
+  .input-form>div {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .nid-button button {
+    max-width: inherit;
+  }
+}
 </style>
