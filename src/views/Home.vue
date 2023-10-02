@@ -60,7 +60,7 @@
           </div>
         </div>
         <div class="form-banner">
-          <img src="../assets/Get-our-APP-top.png" alt="get our app">
+          <img src="../assets/Get-our-APP-top.png" width="293" alt="get our app">
         </div>
       </div>
     </div>
@@ -71,28 +71,28 @@
         <div class="flow-guild row">
           <div class="col-12 col-md-6 col-lg-3">
             <div class="flow-item">
-              <img src="../assets/1-2.png" alt="flow 1">
+              <img src="../assets/1-2.png" width="64" alt="flow 1">
               <br>
               <span>Chọn khoản vay bạn mong muốn và đăng kí</span>
             </div>
           </div>
           <div class="col-12 col-md-6 col-lg-3">
             <div class="flow-item">
-              <img src="../assets/2-2.png" alt="flow-2">
+              <img src="../assets/2-2.png" width="64" alt="flow-2">
               <br>
               <span>Điền đầy đủ thông tin vào đơn</span>
             </div>
           </div>
           <div class="col-12 col-md-6 col-lg-3">
             <div class="flow-item">
-              <img src="../assets/3.png" alt="flow-3">
+              <img src="../assets/3.png" width="64" alt="flow-3">
               <br>
               <span>Nhận tiền ngay trong tíc tắc</span>
             </div>
           </div>
           <div class="col-12 col-md-6 col-lg-3">
             <div class="flow-item">
-              <img src="../assets/4.png" alt="flow-4">
+              <img src="../assets/4.png" width="64" alt="flow-4">
               <br>
               <span>Thanh toán khoản vay với thời hạn đã xác định</span>
             </div>
@@ -113,7 +113,7 @@
         <div class="row">
           <div class="col-12 col-lg-4">
             <article class="card-benefit text-center">
-              <img src="../assets/love_transparent.png" alt="respect">
+              <img src="../assets/love_transparent.png" width="150" height="150" alt="respect">
               <div class="card-content">
                 <h3><strong>Chúng tôi tôn trọng khách hàng</strong></h3>
                 <p>&nbsp;</p>
@@ -123,7 +123,7 @@
           </div>
           <div class="col-12 col-lg-4">
             <article class="card-benefit text-center">
-              <img src="../assets/output-onlinepngtools.png" alt="offer">
+              <img src="../assets/output-onlinepngtools.png" width="150" height="150" alt="offer">
               <div class="card-content">
                 <h3><strong>Lãi suất ưu đãi</strong></h3>
                 <p>&nbsp;</p>
@@ -133,7 +133,7 @@
           </div>
           <div class="col-12 col-lg-4">
             <article class="card-benefit text-center">
-              <img src="../assets/shield_transparent.png" alt="security">
+              <img src="../assets/shield_transparent.png" width="150" height="150" alt="security">
               <div class="card-content">
                 <h3><strong>Bảo mật</strong></h3>
                 <p>&nbsp;</p>
@@ -396,6 +396,7 @@ export default {
 }
 .form-banner img {
   max-width: 100%;
+  height: auto;
 }
 .term {
   margin-top: 20px;
@@ -452,11 +453,21 @@ export default {
   display: inline-block;
   margin-right: -5px;
 }
+.flow-item img {
+  width: 64px;
+  max-width: 100%;
+  height: auto;
+}
 .flow-item span {
   font-size: 18px;
 }
 .page-benefit {
   background-color: #F5F5F9;
+}
+.card-benefit img {
+  width: 150px;
+  aspect-ratio: 1;
+  height: auto;
 }
 .card-content {
   padding: 20px 25px 15px;

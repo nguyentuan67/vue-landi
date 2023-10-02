@@ -23,9 +23,9 @@
         </div>
       </div>
     <div class="header-wrap">
-      <img @click="openMenu" class="header_menu-burger" src="../assets/moneycat/borger.svg" alt="menu">
+      <img @click="openMenu" class="header_menu-burger" width="30" src="../assets/moneycat/borger.svg" alt="menu">
       <a href="/">
-        <img src="../assets/logo.png" alt="">
+        <img src="../assets/logo.png" class="logo" alt="">
       </a>
       <div class="d-flex align-items-center menu-desktop">
         <router-link :to="{name: 'Home'}" class="menu-item">
@@ -112,8 +112,12 @@ export default {
   background: #FF5E62;
   color: #FFFFFF;
 }
+.logo {
+  width: 170px;
+  height: auto;
+}
 .header_menu-burger {
-  width: 30px;
+  height: auto;
   cursor: pointer;
   display: none;
 }
