@@ -17,13 +17,13 @@
 @font-face {
   font-family: 'Josefin Sans';
   src: url('../static/font/JosefinSans-VariableFont_wght.ttf') format('truetype');
-  /* Các thuộc tính CSS khác (như font-weight, font-style) nếu cần */
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Montserrat';
   src: url('../static/font/Montserrat-VariableFont_wght.ttf') format('truetype');
-  /* Các thuộc tính CSS khác (như font-weight, font-style) nếu cần */
+  font-display: swap;
 }
 
 * {
